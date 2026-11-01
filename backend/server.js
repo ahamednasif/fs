@@ -5,8 +5,8 @@ const dotenv = require('dotenv');
 
 // Load environment variables (Make sure to create a .env file with JWT_SECRET in the backend root)
 dotenv.config();
-
 const app = express();
+const HOST = process.env.HOST || '0.0.0.0';
 const PORT = process.env.PORT || 5000;
 
 // Middleware
@@ -31,36 +31,43 @@ connectDB();
 // 1. Authentication Routes
 app.use('/api/auth', require('./routes/authRoutes'));
 
-// 2. Mock Data routes (From previous setup)
+// 2. Mock Data routes (Authentic Batticaloa Portfolio & Certified Masterclasses)
 app.get('/api/courses', (req, res) => {
-  const courses = [
+  const offerings = [
     {
       id: 1,
-      title: 'Fondant Basics',
-      description: 'Master the art of smooth fondant covering and sharp edges.',
-      difficulty: 'Beginner',
-      image: '/course-fondant.jpg'
+      title: 'Hyper Realistic Illusion Cakes',
+      description: 'Optical illusion art like textured pineapple cakes carved and sliced to reveal delectable interior layers.',
+      category: 'Optical Illusion Art',
+      image: '/course_fondant.png'
     },
     {
       id: 2,
-      title: 'Tiered Wedding Cakes',
-      description: 'Learn structural integrity and elegant floral designs for weddings.',
-      difficulty: 'Advanced',
-      image: '/course-wedding.jpg'
+      title: 'Multi Tier Luxury Wedding Cakes',
+      description: 'Pure chocolate indulgence, delicate gold leaf accents, fresh strawberries, and structural doweling.',
+      category: 'Weddings & Galas',
+      image: '/course_wedding.png'
     },
     {
       id: 3,
-      title: 'Buttercream Florals',
-      description: 'Pipe breathtaking, lifelike flowers using glossy buttercream.',
-      difficulty: 'Intermediate',
-      image: '/course-buttercream.jpg'
+      title: 'Thematic Spreads & Dessert Tables',
+      description: 'Complete themed tables, edible lighthouses, custom cupcakes, boxed fudgy brownies, and strawberry chocolate slices.',
+      category: 'Dessert Styling',
+      image: '/course_buttercream.png'
+    },
+    {
+      id: 4,
+      title: '2 Tier Wedding Cake Stacking Class',
+      description: 'Certificate awarded workshop: real cake baking, structural doweling, board wrapping, and flawless buttercream finishes.',
+      category: 'Certified Masterclass',
+      image: '/hero_cake.png'
     }
   ];
-  res.json(courses);
+  res.json(offerings);
 });
 
 // Start Server
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+app.listen(PORT, HOST, () => {
+  console.log(`Server running on http://${HOST}:${PORT}`);
 });
 

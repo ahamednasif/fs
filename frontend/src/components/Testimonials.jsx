@@ -3,19 +3,19 @@ import React from 'react';
 const Testimonials = () => {
   const reviews = [
     {
-      name: "Sarah Jenkins",
-      quote: "The Buttercream Florals course completely transformed my small business. My cakes look perfectly professional now, and I can charge premium prices!",
-      role: "Home Bakery Owner"
+      name: "Fathima R.",
+      quote: "The 3 tier chocolate and gold leaf wedding cake was the crown jewel of our reception. Pure chocolate indulgence, glossy strawberries, and impeccable structural stability throughout the night!",
+      role: "Wedding Client (Batticaloa)"
     },
     {
-      name: "Emily R.",
-      quote: "I've bought other courses before but the detail in Flour Shower's videos is unmatched. It truly feels like you are getting 1-on-1 mentorship.",
-      role: "Hobbyist"
+      name: "Ahamed M.",
+      quote: "The 2 Tier Real Wedding Cake Stacking workshop at the Kattankudy studio was incredible. Working on pro stainless steel stations and mastering doweling and buttercream sharp edges gave me real confidence.",
+      role: "Certified Masterclass Graduate"
     },
     {
-      name: "Michael T.",
-      quote: "Learning structural integrity for wedding cakes was always intimidating. The tiering methods taught here are foolproof. Highly recommend!",
-      role: "Pastry Chef"
+      name: "Zahra N.",
+      quote: "They designed a full nautical sailor theme for my son's birthday with an edible lighthouse, custom cupcakes, and the fudgiest brownies. The guests couldn't stop taking photos!",
+      role: "Thematic Celebration Client"
     }
   ];
 
@@ -26,16 +26,17 @@ const Testimonials = () => {
   );
 
   return (
-    <section className="section" style={{ backgroundColor: 'var(--color-bg)' }}>
+    <section id="reviews" className="section" style={{ backgroundColor: 'var(--color-bg)' }}>
       <div className="container">
-         <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-          <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}>Student <span style={{ color: 'var(--color-primary)' }}>Success Stories</span></h2>
+         <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
+          <span style={{ color: 'var(--color-primary)', fontWeight: 600, letterSpacing: '1.5px', textTransform: 'uppercase', fontSize: '0.85rem' }}>Client & Student Experiences</span>
+          <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', marginTop: '0.5rem' }}>Moments Made Sweet at <span style={{ color: 'var(--color-primary)' }}>Flour Shower</span></h2>
         </div>
 
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-          gap: '2rem'
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
+          gap: '1.75rem'
         }}>
           {reviews.map((review, idx) => (
             <div key={idx} style={{
@@ -43,20 +44,21 @@ const Testimonials = () => {
               padding: '2.5rem',
               borderRadius: '1.5rem',
               boxShadow: 'var(--shadow-sm)',
-              position: 'relative'
+              position: 'relative',
+              border: '1px solid var(--color-border)'
             }}>
               <div style={{ color: 'rgba(233, 30, 99, 0.1)', position: 'absolute', top: '10px', right: '20px', fontSize: '5rem', fontFamily: 'var(--font-serif)', lineHeight: 1 }}>
                 &rdquo;
               </div>
-              <div style={{ display: 'flex', gap: '0.2rem', marginBottom: '1.5rem' }}>
+              <div style={{ display: 'flex', gap: '0.2rem', marginBottom: '1.25rem' }}>
                 <Star /><Star /><Star /><Star /><Star />
               </div>
-              <p style={{ color: 'var(--color-text)', fontSize: '1.1rem', fontStyle: 'italic', marginBottom: '2rem', lineHeight: 1.7, fontFamily: 'var(--font-serif)' }}>
+              <p style={{ color: 'var(--color-text)', fontSize: '0.98rem', fontStyle: 'italic', marginBottom: '2rem', lineHeight: 1.7, fontFamily: 'var(--font-serif)' }}>
                 "{review.quote}"
               </p>
               <div>
                 <h4 style={{ fontSize: '1.1rem', margin: 0, fontFamily: 'var(--font-sans)', fontWeight: 600 }}>{review.name}</h4>
-                <span style={{ color: 'var(--color-text-light)', fontSize: '0.9rem' }}>{review.role}</span>
+                <span style={{ color: 'var(--color-text-light)', fontSize: '0.85rem' }}>{review.role}</span>
               </div>
             </div>
           ))}

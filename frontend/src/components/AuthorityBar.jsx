@@ -4,29 +4,28 @@ const AuthorityBar = () => {
   return (
     <div style={{
       backgroundColor: 'white',
-      padding: '2rem 0',
+      padding: '1.75rem 0',
       borderTop: '1px solid var(--color-border)',
       borderBottom: '1px solid var(--color-border)'
     }}>
       <div className="container" style={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'center',
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
+        gap: '1.5rem',
         alignItems: 'center',
-        gap: '4rem',
-        opacity: 0.7
+        justifyContent: 'center'
       }}>
         <div style={{ textAlign: 'center', fontWeight: 'bold' }}>
-          <span style={{ display: 'block', fontSize: '2rem', color: 'var(--color-primary)' }}>5,000+</span>
-          <span style={{ fontSize: '0.9rem', color: 'var(--color-text-light)', textTransform: 'uppercase', letterSpacing: '1px' }}>Happy Students</span>
+          <span style={{ display: 'block', fontSize: 'clamp(1.25rem, 3.5vw, 1.75rem)', color: 'var(--color-primary)' }}>Batticaloa & Kattankudy</span>
+          <span style={{ fontSize: '0.75rem', color: 'var(--color-text-light)', textTransform: 'uppercase', letterSpacing: '0.75px' }}>Custom Culinary Workshop</span>
         </div>
         <div style={{ textAlign: 'center', fontWeight: 'bold' }}>
-          <span style={{ display: 'block', fontSize: '2rem', color: 'var(--color-primary)' }}>50+</span>
-          <span style={{ fontSize: '0.9rem', color: 'var(--color-text-light)', textTransform: 'uppercase', letterSpacing: '1px' }}>Premium Recipes</span>
+          <span style={{ display: 'block', fontSize: 'clamp(1.25rem, 3.5vw, 1.75rem)', color: 'var(--color-primary)' }}>100% Order in Advance</span>
+          <span style={{ fontSize: '0.75rem', color: 'var(--color-text-light)', textTransform: 'uppercase', letterSpacing: '0.75px' }}>Dynamic Weight & Design Quotes</span>
         </div>
         <div style={{ textAlign: 'center', fontWeight: 'bold' }}>
-          <span style={{ display: 'block', fontSize: '2rem', color: 'var(--color-primary)' }}>4.9/5</span>
-          <span style={{ fontSize: '0.9rem', color: 'var(--color-text-light)', textTransform: 'uppercase', letterSpacing: '1px' }}>Average Rating</span>
+          <span style={{ display: 'block', fontSize: 'clamp(1.25rem, 3.5vw, 1.75rem)', color: 'var(--color-primary)' }}>Certified Masterclasses</span>
+          <span style={{ fontSize: '0.75rem', color: 'var(--color-text-light)', textTransform: 'uppercase', letterSpacing: '0.75px' }}>Pro Stainless Steel Stations</span>
         </div>
       </div>
     </div>

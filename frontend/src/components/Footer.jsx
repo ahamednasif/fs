@@ -1,133 +1,177 @@
-import React, { useState } from 'react';
+import React from 'react';
 import logo from '../assets/logo.png';
 
 const Footer = () => {
-  const [email, setEmail] = useState('');
-  const [status, setStatus] = useState('');
-
-  const handleSubscribe = async (e) => {
-    e.preventDefault();
-    setStatus('Subscribing...');
-    try {
-      const response = await fetch('http://localhost:5000/api/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email })
-      });
-      const data = await response.json();
-      if (response.ok) {
-        setStatus('Subscribed successfully!');
-        setEmail('');
-      } else {
-        setStatus(data.error || 'Failed to subscribe.');
-      }
-    } catch (err) {
-      console.error(err);
-      setStatus('Could not connect to server. Check if MERN backend is running.');
-    }
-  };
-
   return (
-    <footer style={{ backgroundColor: '#1A1A1A', color: '#fff', paddingTop: '5rem', paddingBottom: '2rem' }}>
+    <footer id="contact" style={{ backgroundColor: '#1A1A1A', color: '#fff', paddingTop: '4rem', paddingBottom: '2rem' }}>
       <div className="container">
         
-        {/* Top: Newsletter */}
+        {/* Top: Join Community & Order Panel */}
         <div style={{
           backgroundColor: 'var(--color-primary)',
           borderRadius: '1.5rem',
-          padding: '3rem',
-          display: 'flex',
-          flexWrap: 'wrap',
+          padding: 'clamp(1.5rem, 4vw, 2.5rem)',
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
           alignItems: 'center',
-          justifyContent: 'space-between',
-          gap: '2rem',
-          transform: 'translateY(-8rem)',
-          marginBottom: '-4rem',
+          gap: '1.75rem',
+          transform: 'translateY(-5rem)',
+          marginBottom: '-2.5rem',
           boxShadow: 'var(--shadow-md)'
         }}>
-          <div style={{ flex: '1 1 400px' }}>
-            <h3 style={{ fontSize: '2rem', color: '#fff', marginBottom: '0.5rem', fontFamily: 'var(--font-serif)' }}>Join Our Sweet Community</h3>
-            <p style={{ color: 'rgba(255,255,255,0.9)', fontSize: '1.1rem' }}>Subscribe for free recipes, premium tips, and course updates.</p>
+          <div>
+            <h3 style={{ fontSize: 'clamp(1.4rem, 4vw, 2rem)', color: '#fff', marginBottom: '0.5rem', fontFamily: 'var(--font-serif)' }}>Order In Advance & Join Our Community</h3>
+            <p style={{ color: 'rgba(255,255,255,0.92)', fontSize: 'clamp(0.9rem, 2.5vw, 1.05rem)', lineHeight: 1.5 }}>
+              Request dynamic design quotes based on weight and complexity, or reserve your seat for certified workshops in Kattankudy.
+            </p>
           </div>
-          <div style={{ flex: '1 1 400px' }}>
-            <form onSubmit={handleSubscribe} style={{ display: 'flex', gap: '0.5rem' }}>
-              <input 
-                type="email" 
-                placeholder="Enter your email address" 
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                style={{
-                  flexGrow: 1,
-                  padding: '1rem 1.5rem',
-                  borderRadius: '50px',
-                  border: 'none',
-                  outline: 'none',
-                  fontSize: '1rem'
-                }} 
-              />
-              <button type="submit" className="btn" style={{ 
+          <div className="community-btn-container" style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
+            <a 
+              href="https://wa.me/94767707765" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="btn"
+              style={{ 
                 backgroundColor: '#1A1A1A', 
                 color: '#fff', 
-                padding: '1rem 2rem',
+                padding: '0.9rem 1.6rem',
                 border: 'none',
-                fontWeight: 600
-              }}>Subscribe</button>
-            </form>
-            {status && <p style={{ marginTop: '0.5rem', color: 'rgba(255,255,255,0.9)', fontSize: '0.9rem' }}>{status}</p>}
+                fontWeight: 600,
+                fontSize: '0.95rem',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                textDecoration: 'none',
+                boxShadow: '0 4px 14px rgba(0,0,0,0.2)',
+                borderRadius: '50px',
+                whiteSpace: 'nowrap'
+              }}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#25D366' }}>
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+              </svg>
+              Chat on WhatsApp
+            </a>
           </div>
         </div>
 
         {/* Bottom Area */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '3rem', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '3rem' }}>
+        <div style={{ 
+          display: 'grid', 
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', 
+          gap: '2.5rem', 
+          borderBottom: '1px solid rgba(255,255,255,0.1)', 
+          paddingBottom: '2.5rem' 
+        }}>
           <div>
-             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1.5rem' }}>
-                <img src={logo} alt="Flour Shower Logo" style={{ width: '85px', height: 'auto', objectFit: 'contain' }} />
-                <span style={{ fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: '1.5rem' }}>Flour Shower</span>
+             <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.25rem' }}>
+                <img src={logo} alt="Flour Shower Logo" style={{ width: '75px', height: 'auto', objectFit: 'contain' }} />
+                <div>
+                  <span style={{ fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: '1.4rem', display: 'block', color: '#fff' }}>Flour Shower</span>
+                  <span style={{ fontSize: '0.75rem', color: '#999', textTransform: 'uppercase', letterSpacing: '1px' }}>Batticaloa Studio</span>
+                </div>
               </div>
-              <p style={{ color: '#999', lineHeight: 1.6 }}>Bringing premium bakery education to you, wherever you are in the world.</p>
+              <p style={{ color: '#999', lineHeight: 1.6, fontSize: '0.9rem' }}>
+                Premier custom home baking studio and cake decorating academy. Operating as an order in advance culinary workshop specializing in optical illusion art, luxury wedding cakes, and certified masterclasses.
+              </p>
           </div>
           
           <div>
-            <h4 style={{ fontSize: '1.2rem', marginBottom: '1.5rem' }}>Quick Links</h4>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem', color: '#999' }}>
-              <li><a href="#about" style={{ transition: 'color 0.2s' }} onMouseOver={e=>e.target.style.color='#fff'} onMouseOut={e=>e.target.style.color='#999'}>About Us</a></li>
-              <li><a href="#courses" style={{ transition: 'color 0.2s' }} onMouseOver={e=>e.target.style.color='#fff'} onMouseOut={e=>e.target.style.color='#999'}>All Courses</a></li>
-              <li><a href="#login" style={{ transition: 'color 0.2s' }} onMouseOver={e=>e.target.style.color='#fff'} onMouseOut={e=>e.target.style.color='#999'}>Student Login</a></li>
-              <li><a href="#contact" style={{ transition: 'color 0.2s' }} onMouseOver={e=>e.target.style.color='#fff'} onMouseOut={e=>e.target.style.color='#999'}>Contact Us</a></li>
+            <h4 style={{ fontSize: '1.15rem', marginBottom: '1.25rem', color: 'var(--color-primary)' }}>Studio & Location</h4>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem', color: '#999', fontSize: '0.9rem' }}>
+              <li style={{ display: 'flex', alignItems: 'flex-start', gap: '0.65rem' }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, marginTop: '3px' }}>
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                <span style={{ lineHeight: 1.5 }}>
+                  47/1, Raza Abdul Majeed Alim Lane,<br />
+                  Kattankudy, 30100, Sri Lanka
+                </span>
+              </li>
+              <li style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>
+                <a href="https://wa.me/94767707765" target="_blank" rel="noopener noreferrer" style={{ color: '#999', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={e=>e.target.style.color='#fff'} onMouseOut={e=>e.target.style.color='#999'}>
+                  +94 76 770 7765
+                </a>
+              </li>
+              <li style={{ color: '#777', fontSize: '0.82rem', marginTop: '0.15rem' }}>
+                * Visits & orders by advance booking
+              </li>
             </ul>
           </div>
 
           <div>
-            <h4 style={{ fontSize: '1.2rem', marginBottom: '1.5rem' }}>Legal</h4>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem', color: '#999' }}>
-              <li><a href="#terms" style={{ transition: 'color 0.2s' }} onMouseOver={e=>e.target.style.color='#fff'} onMouseOut={e=>e.target.style.color='#999'}>Terms of Service</a></li>
-              <li><a href="#privacy" style={{ transition: 'color 0.2s' }} onMouseOver={e=>e.target.style.color='#fff'} onMouseOut={e=>e.target.style.color='#999'}>Privacy Policy</a></li>
-              <li><a href="#refund" style={{ transition: 'color 0.2s' }} onMouseOver={e=>e.target.style.color='#fff'} onMouseOut={e=>e.target.style.color='#999'}>Refund Policy</a></li>
+            <h4 style={{ fontSize: '1.15rem', marginBottom: '1.25rem', color: 'var(--color-primary)' }}>Quick Links</h4>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.65rem', color: '#999', fontSize: '0.9rem' }}>
+              <li><a href="#home" style={{ transition: 'color 0.2s' }} onMouseOver={e=>e.target.style.color='#fff'} onMouseOut={e=>e.target.style.color='#999'}>Home</a></li>
+              <li><a href="#about" style={{ transition: 'color 0.2s' }} onMouseOver={e=>e.target.style.color='#fff'} onMouseOut={e=>e.target.style.color='#999'}>The Studio</a></li>
+              <li><a href="#services" style={{ transition: 'color 0.2s' }} onMouseOver={e=>e.target.style.color='#fff'} onMouseOut={e=>e.target.style.color='#999'}>Creations & Workshops</a></li>
+              <li><a href="#benefits" style={{ transition: 'color 0.2s' }} onMouseOver={e=>e.target.style.color='#fff'} onMouseOut={e=>e.target.style.color='#999'}>Our Standard</a></li>
+              <li><a href="#reviews" style={{ transition: 'color 0.2s' }} onMouseOver={e=>e.target.style.color='#fff'} onMouseOut={e=>e.target.style.color='#999'}>Stories & Reviews</a></li>
             </ul>
           </div>
           
           <div>
-            <h4 style={{ fontSize: '1.2rem', marginBottom: '1.5rem' }}>Connect</h4>
+            <h4 style={{ fontSize: '1.15rem', marginBottom: '1.25rem', color: 'var(--color-primary)' }}>Connect & Follow</h4>
+            <p style={{ color: '#888', fontSize: '0.85rem', marginBottom: '1rem' }}>
+              Explore our latest illusion cake drops, wedding showcases, and workshop schedules:
+            </p>
             <div style={{ display: 'flex', gap: '1rem', color: '#999' }}>
-              {/* Social Icons (Inline SVGs for reliability) */}
-              <a href="#" style={{ transition: 'color 0.2s' }} onMouseOver={e=>e.target.style.color='#fff'} onMouseOut={e=>e.target.style.color='#999'}>
+              {/* Instagram Icon */}
+              <a 
+                href="https://www.instagram.com/shower_flour/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                aria-label="Flour Shower on Instagram"
+                style={{ transition: 'color 0.2s' }} 
+                onMouseOver={e=>e.currentTarget.style.color='#E1306C'} 
+                onMouseOut={e=>e.currentTarget.style.color='#999'}
+              >
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
               </a>
-              <a href="#" style={{ transition: 'color 0.2s' }} onMouseOver={e=>e.target.style.color='#fff'} onMouseOut={e=>e.target.style.color='#999'}>
+              {/* Facebook Icon */}
+              <a 
+                href="https://web.facebook.com/p/Flour-Shower-100063519792351" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                aria-label="Flour Shower on Facebook"
+                style={{ transition: 'color 0.2s' }} 
+                onMouseOver={e=>e.currentTarget.style.color='#1877F2'} 
+                onMouseOut={e=>e.currentTarget.style.color='#999'}
+              >
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
               </a>
-              <a href="#" style={{ transition: 'color 0.2s' }} onMouseOver={e=>e.target.style.color='#fff'} onMouseOut={e=>e.target.style.color='#999'}>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+              {/* WhatsApp Community Group Icon */}
+              <a 
+                href="https://chat.whatsapp.com/BJnCoHakzan8W1XYC6LBRS" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                aria-label="Flour Shower Community on WhatsApp"
+                style={{ transition: 'color 0.2s' }} 
+                onMouseOver={e=>e.currentTarget.style.color='#25D366'} 
+                onMouseOut={e=>e.currentTarget.style.color='#999'}
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
               </a>
             </div>
           </div>
         </div>
 
-        <div style={{ textAlign: 'center', marginTop: '2rem', color: '#666', fontSize: '0.9rem' }}>
-          &copy; {new Date().getFullYear()} Flour Shower Academy. All rights reserved.
+        <div style={{ textAlign: 'center', marginTop: '2rem', color: '#666', fontSize: '0.85rem' }}>
+          &copy; {new Date().getFullYear()} Flour Shower Studio (47/1, Raza Abdul Majeed Alim Lane, Kattankudy, 30100, Sri Lanka). All rights reserved.
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 640px) {
+          .community-btn-container {
+            justify-content: flex-start !important;
+          }
+        }
+      `}</style>
     </footer>
   );
 };
